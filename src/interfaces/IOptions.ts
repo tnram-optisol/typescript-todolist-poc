@@ -1,10 +1,14 @@
 export interface RoutesOptions {
   path: string;
-  middleware?: () => {};
+  middleware?: any;
 }
 
 export interface IOptions {
   path: string;
   method: "get" | "post" | "put" | "delete" | "patch";
-  middleware?: () => {};
+  middleware?: any;
+}
+
+export interface MOptions {
+  middleware: any;
 }

@@ -1,14 +1,9 @@
 import fs from "fs";
-
-interface ITaskData {
-  task: string;
-  description?: string;
-  status: "In-Progress" | "Hold" | "Completed" | "New Task";
-  isCompleted?: boolean;
-}
+import { ITaskData } from "../interfaces/values/ITaskData";
 
 export default class TaskService {
   addTask(taskData: ITaskData) {
+    taskData.isCompleted = taskData.isCompleted ? taskData.isCompleted : false;
     let data = fs.readFileSync("tasks.json");
     let myObject = JSON.parse(data.toString());
     myObject.push(taskData);

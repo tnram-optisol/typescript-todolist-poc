@@ -2,13 +2,19 @@ import { Request, Response } from "express";
 import Router from "../decorators/routerDecorator";
 import { ITaskRoute } from "../interfaces/routes/ITaskRoute";
 import TaskService from "../services/taskService";
+import { TaskMiddleWare } from "../middlewares/taskMiddleware";
+import Middleware from "../decorators/middlewareDecorator";
 
 const taskService = new TaskService();
+const taskValidate = new TaskMiddleWare();
 
 class TaskRoute implements ITaskRoute {
   @Router({
     path: "/task/add",
     method: "post",
+  })
+  @Middleware({
+    middleware: taskValidate.checkTasks,
   })
   addTask(req: Request, res: Response) {
     if (req.body) {
