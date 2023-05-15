@@ -14,6 +14,7 @@ class TaskRoute implements ITaskRoute {
     method: "post",
   })
   @Middleware({
+    path: "/task/add",
     middleware: taskValidate.checkTasks,
   })
   addTask(req: Request, res: Response) {
@@ -26,8 +27,9 @@ class TaskRoute implements ITaskRoute {
     path: "/task/",
     method: "get",
   })
-  getTask(req: Request, res: Response) {
-    res.json({ msg: "TaskList" });
+  async getTask(req: Request, res: Response) {
+    let data = taskService.getTask();
+    res.status(200).json(data);
   }
 }
 

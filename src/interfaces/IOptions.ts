@@ -10,5 +10,6 @@ export interface IOptions {
 }
 
 export interface MOptions {
+  path: string;
   middleware: any;
 }

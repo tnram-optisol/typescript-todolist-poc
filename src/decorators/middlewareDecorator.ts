@@ -3,7 +3,7 @@ import { appRouter } from "./routerDecorator";
 
 const middlewareDecortor = (options: MOptions) => {
   return (target: any, propertyKey: string, descriptor: PropertyDescriptor) => {
-    appRouter.use(options.middleware);
+    appRouter.use(options.path, options.middleware);
   };
 };
 

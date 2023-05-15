@@ -17,4 +17,9 @@ export default class TaskService {
       console.log("New data added");
     });
   }
+  getTask() {
+    let data = fs.readFileSync("tasks.json");
+    let obj = JSON.parse(data.toString());
+    return obj;
+  }
 }
