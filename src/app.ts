@@ -1,5 +1,5 @@
 import express from "express";
-//import mongoConnection from "./dbConnect/mongoDBConnection";
+import mongoConnection from "./dbConnect/mongoDBConnection";
 import { appRouter } from "./decorators/routerDecorator";
 
 import "./routes/taskRoute";
@@ -11,17 +11,14 @@ app.use(express.json());
 
 app.use(appRouter);
 
-app.listen(PORT, () => {
-  console.log("Server started on", PORT);
-});
 
-// app.listen(PORT, () => {
-//   mongoConnection
-//     .then(() => {
-//       console.log(`Server started at ${PORT}`);
-//       console.log("DB successfully connected");
-//     })
-//     .catch((error) => {
-//       console.log("DB Connection failed", error);
-//     });
-// });
+app.listen(PORT, () => {
+  mongoConnection
+    .then(() => {
+      console.log(`Server started at ${PORT}`);
+      console.log("DB successfully connected");
+    })
+    .catch((error) => {
+      console.log("DB Connection failed", error);
+    });
+});

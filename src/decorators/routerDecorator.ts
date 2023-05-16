@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { IOptions } from "../interfaces/IOptions";
+import { IOptions } from "../interfaces/utils/IOptions";
 
 export const appRouter = Router();
 
@@ -9,5 +9,3 @@ const routesDecorator = (options: IOptions) => {
   };
 };
 export default routesDecorator;
-
-
