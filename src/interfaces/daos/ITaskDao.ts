@@ -15,7 +15,7 @@ export interface ITaskDao {
   removeTask(_id: ObjectId): Promise<{
     msg: string;
   }>;
-  getTaskById(id: ObjectId): Promise<
+  getTaskById(id: string): Promise<
     | ITaskData
     | {
         msg: string;

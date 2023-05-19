@@ -29,7 +29,7 @@ export class TaskDao implements ITaskDao {
     return { msg: "Task Removed Successfully" };
   }
 
-  async getTaskById(id: ObjectId): Promise<ITaskData | { msg: string }> {
+  async getTaskById(id: string): Promise<ITaskData | { msg: string }> {
     const res: ITaskData | null = await Task.findOne({ _id: id });
     if (!res) {
       return { msg: "No Task found" };

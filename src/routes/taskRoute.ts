@@ -1,4 +1,6 @@
 import { Request, Response } from "express";
+import { ObjectId } from "mongoose";
+
 import Router from "../decorators/routerDecorator";
 import { ITaskRoute } from "../interfaces/routes/ITaskRoute";
 import TaskService from "../services/taskService";
@@ -28,7 +30,15 @@ class TaskRoute implements ITaskRoute {
     method: "get",
   })
   async getTask(req: Request, res: Response) {
-    let data = taskService.getTask();
+    let data = await taskService.getTask();
+    res.status(200).json(data);
+  }
+  @Router({
+    path: "/task/:id",
+    method: "get",
+  })
+  async getTaskById(req: Request, res: Response) {
+    let data = await taskService.getTaskById(req.params.id);
     res.status(200).json(data);
   }
 }
