@@ -13,7 +13,7 @@ export class TaskDao implements ITaskDao {
     return await Task.find();
   }
 
-  async updateTask(_id: ObjectId, task: ITaskData): Promise<{ msg: string }> {
+  async updateTask(_id: string, task: ITaskData): Promise<{ msg: string }> {
     const res: ITaskData | null = await Task.findByIdAndUpdate(_id, task);
     if (!res) {
       return { msg: "No Task found" };
@@ -21,7 +21,7 @@ export class TaskDao implements ITaskDao {
     return { msg: "Task Removed Successfully" };
   }
 
-  async removeTask(_id: ObjectId): Promise<{ msg: string }> {
+  async removeTask(_id: string): Promise<{ msg: string }> {
     const res: ITaskData | null = await Task.findByIdAndDelete({ _id });
     if (!res) {
       return { msg: "No Task found" };

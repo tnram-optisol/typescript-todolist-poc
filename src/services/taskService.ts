@@ -19,4 +19,13 @@ export default class TaskService implements ITaskService {
   async getTaskById(id: string): Promise<ITaskData | { msg: string }> {
     return await this.taskDao.getTaskById(id);
   }
+  async updateTask(id: string, task: ITaskData): Promise<{ msg: string }> {
+    return await this.taskDao.updateTask(id, task);
+  }
+  async removeTask(id: string): Promise<{ msg: string }> {
+    return await this.taskDao.removeTask(id);
+  }
+  async searchTask(task: ITaskData): Promise<ITaskData[] | { msg: string }> {
+    return await this.taskDao.searchTasks(task);
+  }
 }
