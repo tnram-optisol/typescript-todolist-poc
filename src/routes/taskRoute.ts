@@ -75,7 +75,7 @@ class TaskRoute implements ITaskRoute {
     path: "/task/allTasks",
     method: "get",
   })
-  async searcTask(req: Request, res: Response) {
+  async searchTask(req: Request, res: Response) {
     let data = await taskService.searchTask(req.body);
     res.status(200).json(data);
   }
